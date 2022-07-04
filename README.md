@@ -11,22 +11,24 @@ To book an appointment :
  - Upon successful completion of the above steps, A message is sent back to the patient's phone number. With it, a booking code is provided. 
     This booking code is used by both the Doctor and the Hospital to verify this Patient's Appointment.
   
-**Quick Guide**
+# Quick Guide <br />
+
 Below are the steps on how to get the web app up and running
 
-Clone it:
+- Clone it:
+    git clone https://github.com/john-thuo1/hospitalbookingmanagementsystem.git <br />
 
-Cd into it:
-    cd djangohospitalappointment
+- Cd into it: <br />
+    cd djangohospitalappointment <br />
 
-Create a virtual environment
+- Create a virtual environment
     python3 -m venv venv
     
-Activate venv:
+- Activate venv:
     Mac/Linux: source venv/bin/activate
     Windows: venv\Scripts\activate
     
-Install the requirements
+- Install the requirements
     pip install -r requirements.txt
     
 Create DB
