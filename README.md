@@ -4,12 +4,12 @@ The repository contains code for a hospital appointment management system that i
 The patient log's into the given hospital's platform and checks the available Doctor Time slots for an appointment, the type of services being offered by that Hospital and the Doctor offering that service.
 
 To book an appointment :
-  The Patient dials a Specified U.S.S.D code e.g *384*743106#, 
-  Selects the service he/she requires.
-  Selects the doctor available to offer an appointment for that given service
-  If the given time is convinient to the patient, the patient selects it.
- Upon successful completion of the above steps, A message is sent back to the patient's phone number. With it, a booking code is provided. 
- This booking code is used by both the Doctor and the Hospital to verify this Patient's Appointment.
+ - The Patient dials a Specified U.S.S.D code e.g *384*743106#, 
+ - Selects the service he/she requires.
+ - Selects the doctor available to offer an appointment for that given service
+ - If the given time is convinient to the patient, the patient selects it.
+ - Upon successful completion of the above steps, A message is sent back to the patient's phone number. With it, a booking code is provided. 
+    This booking code is used by both the Doctor and the Hospital to verify this Patient's Appointment.
   
 **Quick Guide**
 Below are the steps on how to get the web app up and running
