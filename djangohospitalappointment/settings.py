@@ -26,7 +26,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'c906-105-161-175-32.ap.ngrok.io']
 
 INSTALLED_APPS = [
     'jazzmin',
-
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
