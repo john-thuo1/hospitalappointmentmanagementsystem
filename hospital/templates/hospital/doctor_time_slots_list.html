@@ -1,0 +1,48 @@
+{% extends 'hospital/base.html' %}
+
+{% block content %}
+    <div class="right_col" role="main">
+            <div class="">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2 class="text-center"> Doctor Time Slots </h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <table id="doctor_time_slot-datatable" class="table  table-hover  table-bordered">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Doctor</th>
+                            <th scope="col">Service</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th class="text-center">Operations</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for doctor_time_slot in doctor_time_slots %}
+                                <tr>
+                                    <td>{{ doctor_time_slot.doctor_service.doctor.get_full_name }}</td>
+                                    <td>{{ doctor_time_slot.doctor_service.service.name }}</td>
+                                    <td>{{ doctor_time_slot.start_date }}</td>
+                                    <td>{{ doctor_time_slot.end_date }}</td>
+                                    <td  class="text-center">
+                                            <a href="{% url 'doctor-time-slots-update' doctor_time_slot.pk %}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="{% url 'doctor-time-slots-delete' doctor_time_slot.pk %}" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Delete </a>
+                                    </td>
+                                  </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+{% endblock content%}

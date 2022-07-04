@@ -1,0 +1,48 @@
+{% extends 'hospital/base.html' %}
+
+{% block content %}
+    <div class="right_col" role="main">
+            <div class="">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2 class="text-center"> Doctor Services </h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <table id="doctor_service-datatable" class="table  table-hover  table-bordered">
+                        <thead >
+                          <tr>
+                            <th scope="col">Service</th>
+                            <th scope="col">Doctor</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th class="text-center">Operations</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for doctor_service in doctor_services %}
+                                <tr>
+                                    <td>{{ doctor_service.service.name }}</td>
+                                    <td>{{ doctor_service.doctor.get_full_name }}</td>
+                                    <td>{{ doctor_service.doctor.email }}</td>
+                                    <td>{{ doctor_service.doctor.phone_number }}</td>
+                                    <td  class="text-center">
+                                            <a href="{% url 'doctor-services-update' doctor_service.pk %}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="{% url 'doctor-services-delete' doctor_service.pk %}" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Delete </a>
+                                    </td>
+                                  </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+{% endblock content%}
