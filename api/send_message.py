@@ -12,7 +12,7 @@ def send(phone_number, message="Hi from Africa's Talking"):
     header = {
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
-        'apiKey': 'd961d567468beb8b95975eef380ccb70a3b9dceff7e5d2812b4aaac09153f0e0'
+        'apiKey': 'd961d567468beb8b95975eef380ccb70a3b9dce12ret37u3iw7shs8sjs9sjs' # Use your own API KEY.
     }
 
 
