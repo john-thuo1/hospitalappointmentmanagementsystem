@@ -123,27 +123,23 @@ STATIC_URL = 'static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #------------------------------------------------------
 
-# API Data Interaction
+# Data Interaction Between Project and Africa's Talking API
 '''
-12.	Data is sent from Africa’s Talking U.S.S.D. A.P.I. to our Django project A.P.I. in the form “Content-Type: application/x-www-form-urlencoded”. 
+
+Data is sent from Africa’s Talking U.S.S.D. A.P.I. to our Django project A.P.I. in the form “Content-Type: application/x-www-form-urlencoded”. 
 We have to inform our Django A.P.I. to expect data to be sent to it in this format as the default format Django rest framework A.P.I. expects data is JSON format.
 
-13.	Data should also be sent back from our Django A.P.I. to Africa’s Talking USSD A.P.I. in a string format or as a plain text. 
+Data should also be sent back from our Django A.P.I. to Africa’s Talking USSD A.P.I. in a string format or as a plain text. 
 Django rest framework A.P.I. sends data out in JSON format by default, we have to inform or configure our A.P.I. to send data in plain text and not JSON format.
 
 '''
 REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
-        # since the USSD request is sent using Content-Type: application/x-www-form-urlencoded
-        # inform the django api to accept requests sent with the above content type using the parser
-        # classes below
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
     ],
-    'DEFAULT_RENDERER_CLASSES': [
-        # since the ussd expects back a plain text, set this parameter so as to ensure that data can
-        # be sent back to the ussd request in plain text
+    'DEFAULT_RENDERER_CLASSES': 
         'api.renders.PlainTextRenderer',
     ],
 }
