@@ -1,6 +1,5 @@
-# hospitalbookingmanagementsystem
-The repository contains code for a hospital appointment management system that interacts with Africa's Talking API to seamlessy book Doctor-Patient Appointment thereby improving on Patient's Access to Medical Care, particularly in the rural areas. 
-
+# Hospital Appointment Management System
+The system interacts with Africa's Talking APIs to enable seamless Hospital Appointment Booking. 
 The patient log's into the given hospital's platform and checks the available Doctor Time slots for an appointment, the type of services being offered by that Hospital and the Doctor offering that service.
 
 To book an appointment :
@@ -8,8 +7,8 @@ To book an appointment :
  - Selects the service he/she requires.
  - Selects the doctor available to offer an appointment for that given service
  - If the given time is convinient to the patient, the patient selects it.
- - Upon successful completion of the above steps, A message is sent back to the patient's phone number. With it, a booking code is provided. 
-    This booking code is used by both the Doctor and the Hospital to verify this Patient's Appointment.
+ - Upon successful completion of the above steps, A message is sent back to the patient's phone number which contains the generated Booking Code. 
+ - This booking code is used by both the Doctor and the Hospital to verify this Patient's Appointment.
   
 # Quick Guide <br />
 
