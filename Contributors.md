@@ -1,2 +1,2 @@
 1. Dansol Obondo, Founder @ Venturo Technologies, Kenya. https://venturo.co.ke/
-2. John Thuo Mwangi
+2. John Thuo
