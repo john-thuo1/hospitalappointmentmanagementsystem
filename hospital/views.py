@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.shortcuts import reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse
+
+# from django.shortcuts import reverse
 from django.views.generic import (CreateView, ListView, UpdateView, DeleteView)
-# from users.models import (Patients, Doctors)
 
 from . models import (Services, DoctorServices, DoctorTimeSlots, Appointments)
 
@@ -10,6 +11,9 @@ from . models import (Services, DoctorServices, DoctorTimeSlots, Appointments)
 #This is a method or function view that accepts a web request and returns back the index HTML page render
 def home(request):
     return render(request, 'hospital/index.html')
+
+def about(request):
+    return render(request, 'hospital/about.html')
 
 #-------------------------------------------------------------------------------------------------------------------------
 # Services Views
@@ -78,7 +82,6 @@ class ServicesUpdateView(UpdateView):
 class DoctorServicesCreateView(CreateView):
     model = DoctorServices
     fields = ['service', 'doctor']
-    # the template that will render the data/form.
     template_name = 'hospital/doctor_services_detail.html'
 
     def get_context_data(self, **kwargs):
@@ -95,13 +98,10 @@ class DoctorServicesListView(ListView):
     ordering = ['-pk']
     paginate_by = 10
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return context
+
     
 class DoctorServicesDeleteView(DeleteView):
     model = DoctorServices
-    # success_url = '/'
     template_name = 'users/confirm_delete.html'
 
  
@@ -138,7 +138,6 @@ class DoctorServicesUpdateView(UpdateView):
 class DoctorTimeSlotsCreateView(CreateView):
     model = DoctorTimeSlots
     fields = ['doctor_service', 'start_date', 'end_date']
-    # the template that will render the data/form.
     template_name = 'hospital/doctor_time_slots_detail.html'
 
     def get_context_data(self, **kwargs):
@@ -153,9 +152,12 @@ class DoctorTimeSlotsListView(ListView):
     model = DoctorTimeSlots
     template_name = 'hospital/doctor_time_slots_list.html'
     context_object_name = 'doctortimeslots'
-    # ordering = ['-pk']
-    # paginate_by = 10
-
+    ordering = ['-pk']
+    paginate_by = 30
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    
 
 class DoctorTimeSlotsDeleteView(DeleteView):
     model = DoctorTimeSlots
@@ -163,7 +165,7 @@ class DoctorTimeSlotsDeleteView(DeleteView):
     template_name = 'users/confirm_delete.html'
     def get_success_url(self):
         # redirect user back to the page displaying a list of doctor time slots
-        return reverse('doctor-time-slots-list')
+        return redirect('doctor-time-slots-list')
  
     
     def get_context_data(self, **kwargs):
@@ -192,7 +194,6 @@ class DoctorTimeSlotsUpdateView(UpdateView):
 class AppointmentsCreateView(CreateView):
     model = Appointments
     fields = ['doctor_time_slots', 'patient','booking_code']
-    # the template that will render the data/form.
     template_name = 'hospital/appointments_detail.html'
 
     def get_context_data(self, **kwargs):
@@ -209,15 +210,11 @@ class AppointmentsListView(ListView):
     ordering = ['-pk']
     paginate_by = 10
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return context
+
     
 class AppointmentsDeleteView(DeleteView):
     model = Appointments
-    # success_url = '/'
     template_name = 'users/confirm_delete.html'
-    
     
     def get_success_url(self):
         return reverse('appointments-list')
@@ -238,7 +235,6 @@ class AppointmentsUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('appointments-list')
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         context['table_title'] = 'Update Appointment Details'
         return context

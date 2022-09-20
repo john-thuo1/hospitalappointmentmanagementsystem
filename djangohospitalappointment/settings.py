@@ -17,15 +17,19 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG')
+ 
+# On the allowed hosts, create a url via Ngrok and copy the second part after https://, As shown
+# Ngrok site Url https://4af2-41-216-97-217.in.ngrok.io
+ALLOWED_HOSTS = ['127.0.0.1', '4af2-41-216-97-217.in.ngrok.io']
 
-ALLOWED_HOSTS = ['127.0.0.1', 'c906-105-161-175-32.ap.ngrok.io']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
+
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -76,6 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
         
+        
     }
 }
 
@@ -121,15 +126,20 @@ STATIC_URL = 'static/'
 # MEDIA_URL= '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+LOGIN_REDIRECT_URL = 'login-redirect'
+
+# the route the user will automatically be redirected if they access a page without logging in
+LOGIN_URL = 'login'
 #------------------------------------------------------
 
-# Data Interaction Between Project and Africa's Talking API
+# API Data Interaction
 '''
-
-Data is sent from Africa’s Talking U.S.S.D. A.P.I. to our Django project A.P.I. in the form “Content-Type: application/x-www-form-urlencoded”. 
+12.	Data is sent from Africa’s Talking U.S.S.D. A.P.I. to our Django project A.P.I. in the form “Content-Type: application/x-www-form-urlencoded”. 
 We have to inform our Django A.P.I. to expect data to be sent to it in this format as the default format Django rest framework A.P.I. expects data is JSON format.
 
-Data should also be sent back from our Django A.P.I. to Africa’s Talking USSD A.P.I. in a string format or as a plain text. 
+13.	Data should also be sent back from our Django A.P.I. to Africa’s Talking USSD A.P.I. in a string format or as a plain text. 
 Django rest framework A.P.I. sends data out in JSON format by default, we have to inform or configure our A.P.I. to send data in plain text and not JSON format.
 
 '''
@@ -139,7 +149,8 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
     ],
-    'DEFAULT_RENDERER_CLASSES': 
+    'DEFAULT_RENDERER_CLASSES': [
+       
         'api.renders.PlainTextRenderer',
     ],
 }

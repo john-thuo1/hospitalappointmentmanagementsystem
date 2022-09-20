@@ -1,6 +1,7 @@
 from django.urls import path
 
-from users.views import (PatientsListView, PatientsCreateView, PatientsUpdateView, PatientsDeleteView,DoctorsListView, DoctorsCreateView, DoctorsUpdateView, DoctorsDeleteView)
+from users.views import (PatientsListView, PatientsCreateView, PatientsUpdateView, PatientsDeleteView,
+                         DoctorsListView, DoctorsCreateView, DoctorsUpdateView, DoctorsDeleteView)
 
 urlpatterns = [
     path('patients', PatientsListView.as_view(), name='patients-list'),

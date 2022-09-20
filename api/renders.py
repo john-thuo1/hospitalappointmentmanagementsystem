@@ -9,3 +9,7 @@ class PlainTextRenderer(renderers.BaseRenderer):
 
     def render(self, data, media_type=None, renderer_context=None):
         return smart_str(data, encoding=self.charset)
+    
+    
+    # def render(self, data, media_type=None, renderer_context=None):
+    #     return str(renderers.JSONRenderer().render(data, media_type, renderer_context)).encode(self.charset)

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from hospital.views import (ServicesListView, ServicesCreateView, ServicesUpdateView, ServicesDeleteView,
+from hospital.views import (about, home, ServicesListView, ServicesCreateView, ServicesUpdateView, ServicesDeleteView,
                             DoctorServicesListView, DoctorServicesCreateView, DoctorServicesUpdateView,
                             DoctorServicesDeleteView,
                             DoctorTimeSlotsListView, DoctorTimeSlotsCreateView, DoctorTimeSlotsUpdateView,
@@ -9,7 +9,8 @@ from hospital.views import (ServicesListView, ServicesCreateView, ServicesUpdate
                             AppointmentsDeleteView)
 
 urlpatterns = [
-
+    path('about', about, name='about'),
+    path('', home, name='home'),
     path('services', ServicesListView.as_view(), name='services-list'),
     path('services/new/', ServicesCreateView.as_view(), name='services-create'),
     path('services/<int:pk>/update/', ServicesUpdateView.as_view(), name='services-update'),

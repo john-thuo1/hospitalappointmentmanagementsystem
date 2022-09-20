@@ -6,13 +6,15 @@ def send(phone_number, message="Hi from Africa's Talking"):
         "username": 'sandbox',
         "to": f"{phone_number}",
         "message": message,
-        "from": 74310 # replace this with your short code
+        "from": 53624  # Create a short Code using SMS Africa's Talking API
+        # Channel Created is *384*536247#
     }
 
     header = {
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
-        'apiKey': 'd961d567468beb8b95975eef380ccb70a3b9dce12ret37u3iw7shs8sjs9sjs' # Use your own API KEY.
+        'apiKey': '19df4062c0da8e304bddac3ed7b7f2610c67f9281e7c1184b004c0bb7a47ff08'
+
     }
 
 

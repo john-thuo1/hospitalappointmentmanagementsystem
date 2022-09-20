@@ -3,6 +3,7 @@ import random
 
 
 def get_code():
-    value = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 6)) 
+    length_of_code = 6
+    value = ''.join(random.choices(string.ascii_uppercase + string.digits, k = length_of_code)) 
 
     return value
