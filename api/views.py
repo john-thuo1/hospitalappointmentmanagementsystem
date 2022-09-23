@@ -79,7 +79,7 @@ def get_doctor_time_slot(doctor_service_id):
     response = "CON Select Slot to Book\n"
     for index, date, start_time, end_time in doctor_time_slot_object:
         count += 1
-        response += f"{count}. {date} \n"
+        response += f"{count}. {date} from {start_time} to {end_time}\n"
 
     if count == 0:
         response = "END No Appointments Available Yet \n"
