@@ -13,7 +13,7 @@ class DoctorServicesAdmin(admin.ModelAdmin):
     list_display = ['doctor', 'service']
 
 class DoctorTimeSlotsAdmin(admin.ModelAdmin):
-    list_display = ['Doctor_Name','Doctor_Service','start_date', 'end_date']
+    list_display = ['Doctor_Name','Doctor_Service','date', 'start_time', 'end_time']
 
     # Method to display the doctors Name in the Django admin dashboard.it overrides the __str__ method in the models.py
     def Doctor_Name(self, doctorTimeSlots):
@@ -27,7 +27,7 @@ class AppointmentsAdmin(admin.ModelAdmin):
     list_display = ['patient','Appointment_Date', 'booking_code']
 
     def Appointment_Date(self, appointments):
-        return appointments.doctor_time_slots.start_date
+        return appointments.doctor_time_slots.date
 
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Appointments, AppointmentsAdmin)

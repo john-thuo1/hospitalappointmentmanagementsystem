@@ -29,7 +29,7 @@ def get_doctor_services_object(service_id, index=None):
 
 def get_doctor_time_slot_object(doctor_service_id, index=None):
     doctor_time_slots = DoctorTimeSlots.objects.filter(
-        doctor_service_id=doctor_service_id).values_list('pk', 'start_date', 'end_date')
+        doctor_service_id=doctor_service_id).values_list('pk', 'date', 'start_time', 'end_time')
     if index is None:
         return doctor_time_slots
     else:
@@ -77,9 +77,9 @@ def get_doctor_time_slot(doctor_service_id):
         return "END No Appointments Available Yet \n"
 
     response = "CON Select Slot to Book\n"
-    for index, start_date, end_date in doctor_time_slot_object:
+    for index, date, start_time, end_time in doctor_time_slot_object:
         count += 1
-        response += f"{count}. {start_date} \n"
+        response += f"{count}. {date} \n"
 
     if count == 0:
         response = "END No Appointments Available Yet \n"
@@ -158,7 +158,13 @@ def ussd_callback(request):
                 else:
 
                     response = "END Appointment Booked Successfully. Confirmation message will be sent to you shortly!"
-                    send_message.send(phone_number, f"Dear Patient, Your Appointment has been Booked Successfully. Your booking code is {booking_code}. Please avail it when visiting the Hospital!")
+                    send_message.send(phone_number, f"Dear {appointment.patient},\n"
+                                      f"Your Appointment with {doctor_time_slot.doctor_service.doctor} of \n"
+                                      f"{doctor_time_slot.doctor_service.service} services has been Booked Successfully.\n"
+                                      f"Your booking code is {booking_code} and the appointment date is on {appointment.doctor_time_slots.date} at {appointment.doctor_time_slots.start_time}.\n" 
+                                      f" Please avail your booking code when visiting the Hospital!\n"
+                                      f" If you need to, Please login to our hospital site to upload your recent medical records!"
+                                      f" Thank you!")
 
             else:
                 response = "END You Are Not a Registered Patient."

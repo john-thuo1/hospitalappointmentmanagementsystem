@@ -21,7 +21,7 @@ DEBUG = config('DEBUG')
  
 # On the allowed hosts, create a url via Ngrok and copy the second part after https://, As shown
 # Ngrok site Url https://4af2-41-216-97-217.in.ngrok.io
-ALLOWED_HOSTS = ['127.0.0.1', '4af2-41-216-97-217.in.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', '2ec0-41-216-97-217.eu.ngrok.io']
 
 
 

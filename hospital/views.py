@@ -122,7 +122,7 @@ class DoctorServicesUpdateView(UpdateView):
     template_name = 'hospital/doctor_services_detail.html'
 
     
-    def get_success_url(self):
+    def get_success_url(self) -> str:
         return reverse('doctor-services-list')
 
     def get_context_data(self, **kwargs):
@@ -137,23 +137,23 @@ class DoctorServicesUpdateView(UpdateView):
 #  
 class DoctorTimeSlotsCreateView(CreateView):
     model = DoctorTimeSlots
-    fields = ['doctor_service', 'start_date', 'end_date']
+    fields = ['doctor_service', 'date', 'start_time', 'end_time']
     template_name = 'hospital/doctor_time_slots_detail.html'
-
+    def get_success_url(self) -> str:
+        return reverse('doctor-time-slots-list')
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         context['table_title'] = 'Add A New Doctor Time Slot'
         return context
-    def get_success_url(self) -> str:
-        return reverse('doctor-time-slots-list')
-        
+
 class DoctorTimeSlotsListView(ListView):
     model = DoctorTimeSlots
     template_name = 'hospital/doctor_time_slots_list.html'
-    context_object_name = 'doctortimeslots'
+    context_object_name = 'doctor_time_slots'
     ordering = ['-pk']
-    paginate_by = 30
+    paginate_by = 10
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
@@ -163,17 +163,17 @@ class DoctorTimeSlotsDeleteView(DeleteView):
     model = DoctorTimeSlots
     # success_url = '/'
     template_name = 'users/confirm_delete.html'
-    def get_success_url(self):
+    def get_success_url(self) -> str:
         # redirect user back to the page displaying a list of doctor time slots
-        return redirect('doctor-time-slots-list')
+        return reverse('doctor-time-slots-list')
  
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Delete Service'
-        doctor_time_slot = DoctorTimeSlots.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = "Delete Doctor's Time Slot"
+        doctor_time_slot = DoctorTimeSlots.objects.get(pk=self.kwargs.get('pk'))
         context['message'] = f'Are you sure you want to delete the following Doctor Time Slot: "{doctor_time_slot}" ?'
-        context['cancel_url'] = 'doctor_time_slots_list'
+        context['cancel_url'] = 'doctor-time-slots-list'
         return context
 
 
@@ -182,10 +182,13 @@ class DoctorTimeSlotsUpdateView(UpdateView):
     fields = ['doctor_service', 'start_date', 'end_date']
 
     template_name = 'hospital/doctor_time_slots_detail.html'
+    def get_success_url(self) -> str:
+        return reverse('doctor-time-slots-list') 
+    
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        context['table_title'] = 'Update Doctor Time Slot Details'
+        context['table_title'] = "Update Doctor's Time Slot Details"
         return context
 
 #--------------------------------------------------------------------------------------------------------------------------
@@ -216,14 +219,14 @@ class AppointmentsDeleteView(DeleteView):
     model = Appointments
     template_name = 'users/confirm_delete.html'
     
-    def get_success_url(self):
+    def get_success_url(self) -> str:
         return reverse('appointments-list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Delete Appointment'
         patient_appointment= Appointments.objects.get(pk=self.kwargs.get('pk'))
-        context['message'] = f'Are you sure you want to delete patient "{patient_appointment.patient}" appointment on {patient_appointment.doctor_time_slots.start_date}?'
+        context['message'] = f'Are you sure you want to delete patient "{patient_appointment.patient}" appointment on {patient_appointment.doctor_time_slots.date}?'
         context['cancel_url'] = 'appointments-list'
         return context
 

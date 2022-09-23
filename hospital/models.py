@@ -10,7 +10,7 @@ from django.utils import timezone
 class Services(models.Model):
     name = models.CharField(max_length=100)
     # Column holds a brief description of the service
-    description =models.TextField(max_length=500, default="Provide a description of the Service")
+    description =models.TextField(max_length=500, help_text="Provide a description of the Service")
 
     #Method returns a string representation of the name of the service being provided by the hospital
     def __str__(self):
@@ -38,18 +38,19 @@ class DoctorServices(models.Model):
 
 class DoctorTimeSlots(models.Model):
     # ForeignKey/ManyToMany
-    doctor_service = models.ForeignKey(DoctorServices, on_delete=models.PROTECT)
-    start_date = models.DateField(default=timezone.now)
-    end_date = models.DateField(default=timezone.now)
+    doctor_service = models.ForeignKey(DoctorServices, on_delete=models.CASCADE)
+    date = models.DateField(default=timezone.now)
+    start_time = models.TimeField(default=timezone.now)
+    end_time = models.TimeField(default=timezone.now)
     '''
     This is a method in the class “DoctorTimeSlots” class we will create that will be 
     responsible for returning back the string representation of objects or table records created 
     in the “DoctorTimeSlots” table. The string representation method will return is 
-    the full name of the doctor and the start date of the time slot.'''
+    the full name of the doctor, date of the time slot and the time allocation of the slot.'''
 
     def __str__(self):
         # doctor.get_full_name()
-        return f"{self.doctor_service.doctor.username}.  Consulting Dates:{self.start_date} "
+        return f"{self.doctor_service.doctor.username}.  Consulting Date:{self.date} from {self.start_time} to {self.end_time}"
     
     class Meta:
         verbose_name_plural = "DoctorTimeSlots"  
@@ -58,13 +59,13 @@ class DoctorTimeSlots(models.Model):
 # To provide consultation for a particular services they offer
 class Appointments(models.Model):
     # 
-    doctor_time_slots = models.ForeignKey(DoctorTimeSlots, null=True, on_delete=models.PROTECT)
+    doctor_time_slots = models.ForeignKey(DoctorTimeSlots, null=True, on_delete=models.CASCADE)
     patient = models.OneToOneField(Patients, null=True, on_delete=models.PROTECT)
     booking_code = models.CharField(null=True, max_length=6)
 
 
     def __str__(self):
-        return f"{self.patient.username} booked an appointment on {self.doctor_time_slots.start_date}"
+        return f"{self.patient.username} booked an appointment on {self.doctor_time_slots.date} from {self.doctor_time_slots.start_time} to {self.doctor_time_slots.end_time}"
     
     class Meta:
         verbose_name_plural = "Appointments"
