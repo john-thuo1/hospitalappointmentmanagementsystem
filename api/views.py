@@ -60,7 +60,7 @@ def get_doctor_services(service_id):
     response = "CON Select Doctor \n"
     for index, doctor__first_name, doctor__last_name in doctor_services_object:
         count += 1
-        response += f"{count}. {doctor__first_name} {doctor__last_name} \n"
+        response += f"{count}. Dr {doctor__first_name} {doctor__last_name} \n"
 
     if count == 0:
         response = "END No Doctor Available for the Service \n"
@@ -83,6 +83,8 @@ def get_doctor_time_slot(doctor_service_id):
 
     if count == 0:
         response = "END No Appointments Available Yet \n"
+  
+        
     return response
 
 
@@ -159,7 +161,7 @@ def ussd_callback(request):
 
                     response = "END Appointment Booked Successfully. Confirmation message will be sent to you shortly!"
                     send_message.send(phone_number, f"Dear {appointment.patient},\n"
-                                      f"Your Appointment with {doctor_time_slot.doctor_service.doctor} of \n"
+                                      f"Your Appointment with Dr {doctor_time_slot.doctor_service.doctor.first_name} {doctor_time_slot.doctor_service.doctor.last_name} of \n"
                                       f"{doctor_time_slot.doctor_service.service} services has been Booked Successfully.\n"
                                       f"Your booking code is {booking_code} and the appointment date is on {appointment.doctor_time_slots.date} at {appointment.doctor_time_slots.start_time}.\n" 
                                       f" Please avail your booking code when visiting the Hospital!\n"
