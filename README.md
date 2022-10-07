@@ -3,7 +3,7 @@ The system interacts with Africa's Talking APIs to enable seamless Hospital Appo
 The patient log's into the given hospital's platform and checks the available Doctor Time slots for an appointment, the type of services being offered by that Hospital and the Doctor offering that service.
 
 To book an appointment :
- - The Patient dials a Specified U.S.S.D code e.g *384*743106#, 
+ - The Patient dials a Specified U.S.S.D code e.g (*)384(*)743106(#), 
  - Selects the service he/she requires.
  - Selects the doctor available to offer an appointment for that given service
  - If the given time is convinient to the patient, the patient selects it.
