@@ -5,8 +5,8 @@ The patient log's into the given hospital's platform and checks the available Do
 
 **Viewing the Hospital Appointment Management System Dashboard**
 
-To view the Website Dashboard, check **WebsiteDashboard.md**
-TO view the Mobile User Interface Screens, check **MobileUIDashboard.md**
+- To view the Website Dashboard, check **WebsiteDashboard.md**
+- To view the Mobile User Interface Screens, check **MobileUIDashboard.md**
 
 
 
@@ -53,7 +53,8 @@ Below are the steps on how to get the web app up and running
       
 
 - Run the server: <br />
-   python manage.py runserver <br />
+   - python manage.py runserver Port Number<br />
+   - python manage.py runserver 3000 <br />
 
 - Navigate to your localhost site <br />
    Follow the instructions on the home page to start using the site
