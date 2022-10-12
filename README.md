@@ -6,7 +6,7 @@ To book an appointment :
  - The Patient dials a Specified U.S.S.D code e.g (*)384(*)743106(#), 
  - Selects the service he/she requires.
  - Selects the doctor available to offer an appointment for that given service
- - If the given time is convinient to the patient, the patient selects it.
+ - If the given time is convenient to the patient, the patient selects it.
  - Upon successful completion of the above steps, A message is sent back to the patient's phone number which contains the generated Booking Code. 
  - This booking code is used by both the Doctor and the Hospital to verify this Patient's Appointment.
   
