@@ -1,9 +1,15 @@
 # Hospital Appointment Management System
+
 The system interacts with Africa's Talking APIs to enable seamless Hospital Appointment Booking. 
 The patient log's into the given hospital's platform and checks the available Doctor Time slots for an appointment, the type of services being offered by that Hospital and the Doctor offering that service.
 
-To book an appointment :
- - The Patient dials a Specified U.S.S.D code e.g (*)384(*)743106(#), 
+#Viewing the Hospital Appointment Management System Dashboard
+
+To view the Dashboard, check #WebsiteDashboard.md
+
+
+#Booking an Appointment
+ - The Patient dials a Specified U.S.S.D code e.g (*)384(*)743106(#) on their phone, 
  - Selects the service he/she requires.
  - Selects the doctor available to offer an appointment for that given service
  - If the given time is convenient to the patient, the patient selects it.
