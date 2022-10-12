@@ -2,7 +2,7 @@ The file contains the current Hospital Appointment Management System Website Das
 
 ![PatientsDisplay](WebsiteDisplay/PatientsDisplay.png)
 ![DoctorsDisplay](WebsiteDisplay/DoctorsDisplay.png)
-![HospitalServicesDisplay](HospitalServicesDisplay.png)
-![DoctorServicesDisplay](DoctorServicesDisplay.png)
-![DoctorTimeSlotsDisplay](DoctorTimeSlotsDisplay.png)
-![AppointmentsDisplay](AppointmentsDisplay.png)
+![HospitalServicesDisplay](WebsiteDisplay/HospitalServicesDisplay.png)
+![DoctorServicesDisplay](WebsiteDisplay/DoctorServicesDisplay.png)
+![DoctorTimeSlotsDisplay](WebsiteDisplay/DoctorTimeSlotsDisplay.png)
+![AppointmentsDisplay](WebsiteDisplay/AppointmentsDisplay.png)
