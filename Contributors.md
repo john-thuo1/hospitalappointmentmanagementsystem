@@ -1,2 +1,2 @@
-1. John Thuo 
+1. John Thuo , Github Profile  https://github.com/john-thuo1
 2. Jessica Bonnie 
