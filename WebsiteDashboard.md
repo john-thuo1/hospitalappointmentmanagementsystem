@@ -1,7 +1,7 @@
 The file contains the current Hospital Appointment Management System Website Dashboard!
 
-![PatientsDisplay](PatientsDisplay.png)
-![DoctorsDisplay](DoctorsDisplay.png)
+![PatientsDisplay](WebsiteDisplay/PatientsDisplay.png)
+![DoctorsDisplay](WebsiteDisplay/DoctorsDisplay.png)
 ![HospitalServicesDisplay](HospitalServicesDisplay.png)
 ![DoctorServicesDisplay](DoctorServicesDisplay.png)
 ![DoctorTimeSlotsDisplay](DoctorTimeSlotsDisplay.png)
