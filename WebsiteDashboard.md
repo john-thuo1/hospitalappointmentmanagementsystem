@@ -4,5 +4,5 @@ The file contains the current Hospital Appointment Management System Website Das
 ![DoctorsDisplay](DoctorsDisplay.png)
 ![HospitalServicesDisplay](HospitalServicesDisplay.png)
 ![DoctorServicesDisplay](DoctorServicesDisplay.png)
-![DoctorTimeSolotsDisplay](DoctorTimeSolotsDisplay.png)
+![DoctorTimeSlotsDisplay](DoctorTimeSlotsDisplay.png)
 ![AppointmentsDisplay](AppointmentsDisplay.png)
