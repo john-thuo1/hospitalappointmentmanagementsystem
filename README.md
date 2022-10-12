@@ -5,7 +5,9 @@ The patient log's into the given hospital's platform and checks the available Do
 
 **Viewing the Hospital Appointment Management System Dashboard**
 
-To view the Dashboard, check **WebsiteDashboard.md**
+To view the Website Dashboard, check **WebsiteDashboard.md**
+TO view the Mobile User Interface Screens, check **MobileUIDashboard.md**
+
 
 
 # Booking an Appointment
