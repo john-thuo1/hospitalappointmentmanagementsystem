@@ -1,0 +1,47 @@
+{% extends 'hospital/base.html' %}
+
+{% block content %}
+    <div class="right_col" role="main">
+            <div class="">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2 class="text-center"> Hospitals </h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <table id="service-datatable" class="table  table-hover  table-bordered" style="width: 100%;" >
+                        <thead class="table-dark">
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Services</th>
+                            <th class="text-center">Operations</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for hospital in hospitals %}
+                                <tr>
+                                    <td>{{ hospital.name }}</td>
+                                    <td>{{ hospital.services.get_queryset.values }}</td>
+                                    <td  class="text-center">
+                                            <a href="{% url 'hospitals-update' hospital.pk %}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+
+                                    </td>
+                                    <td  class="text-center">
+                                      <a href="{% url 'hospitals-delete' hospital.pk %}" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Delete </a>
+                                    </td>
+                                  </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+{% endblock content%}

@@ -1,13 +1,18 @@
-{% extends 'exams/base.html' %}
-{% load crispy_forms_tags %}
-
+{% extends 'hospital/base.html' %}
 {% block content %}
-    <h2>You have been logged out</h2>
-    <div class="content-section">
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                <a href="{% url 'login' %}" class="ml-2">Log In Again</a>
-            </small>
-        </div>
+<h2>You have been logged out</h2>
+
+    <div class="border-top pt-3">
+        <small class="text-muted">Already have an account?
+            <a href="{% url 'login' %}">Log In Again</a>
+        </small>
+
     </div>
-{% endblock content%}
+
+ <!-- Here, endblock content states that you are ending the blockcontent of name content -->
+<!-- Helps when you have multiple blockcontents to end -->
+ {% endblock content %}
+
+    
+
+

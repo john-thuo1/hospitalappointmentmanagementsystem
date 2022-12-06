@@ -5,6 +5,8 @@ from users.models import Patients
 from  api.generate_code import get_code
 import api.send_message as send_message
 
+
+
 def get_service_object(index=None):
     service = Services.objects.values_list('id', 'name')
     if index is None:
@@ -104,10 +106,13 @@ def ussd_callback(request):
         values = text.split("*")
 
         if len(values) == 1:
+            selected_hospital_index = int(values[0])
+
             selected_service_index = int(values[0])
 
             selected_service = get_service_object(selected_service_index)
             selected_service_id = -1
+            
             if selected_service is not None:
                 selected_service_id = selected_service[0]
 

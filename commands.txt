@@ -1,0 +1,17 @@
+To Generate the Visual Representation of Our Models.
+1. pip install django-extensions
+2. Download graphviz via django-extensions/graph Models
+3. Add django_extensions on our settings.py
+4. pip install pyparsing pydot
+5. Add the following instructions on our Settings.py file
+  GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
+Note, to generate models of only specific applications, use the following Command:
+GRAPH_MODELS = {
+  'app_labels': ["hospital", "users", "auth"],
+}
+
+6. Run Command python manage.py graph_models -a -g -o my_project_visualized.png
+7. Check to see if the file has been generated. If not, repeat the above instructions or simply make use of StackOverflow.

@@ -28,9 +28,13 @@ class AppointmentsAdmin(admin.ModelAdmin):
 
     def Appointment_Date(self, appointments):
         return appointments.doctor_time_slots.date
+    
+
+    
 
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Appointments, AppointmentsAdmin)
 admin.site.register(DoctorServices, DoctorServicesAdmin)
 admin.site.register(DoctorTimeSlots, DoctorTimeSlotsAdmin)
+# admin.site.register(Hospitals)
 

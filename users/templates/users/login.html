@@ -1,25 +1,29 @@
-{% extends 'exams/base.html' %}
+{% extends 'hospital/base.html' %}
 {% load crispy_forms_tags %}
-
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group mt-2">
-                <button class="btn btn-primary" type="submit">Log In</button>
-            </div>
-
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Don't have an account? <a href="{% url 'parents-create' %}" class="ml-2">Sign Up</a>
-            </small>
+<div class="content-section"> 
+    <form method="POST">
+        <!-- Cross site Request Fogery Token must be included in the form -->
+        {% csrf_token %}
+        <!-- field set is used to group related elements in a form together -->
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Log In</legend>
+            <!-- .as_p renders the form in paragraph form -->
+            <!-- {{ form.as_p }} -->
+            {{ form|crispy }}
+        </fieldset>
+        <!-- Submit Button placed after fieldset form -->
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Log In</button>
         </div>
-    </div>
-{% endblock content%}
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">Do you need an account?<a class="ml-2" href="{%  url 'register' %}">Sign Up Now</a></small></div>
+</div>
+ <!-- Here, endblock content states that you are ending the blockcontent of name content -->
+<!-- Helps when you have multiple blockcontents to end -->
+ {% endblock content %}
+
+    
 
 

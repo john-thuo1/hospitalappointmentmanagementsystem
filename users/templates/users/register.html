@@ -1,0 +1,46 @@
+{% extends 'hospital/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section"> 
+    <form method="POST">
+        <!-- Cross site Request Fogery Token must be included in the form -->
+        {% csrf_token %}
+        <!-- field set is used to group related elements in a form together -->
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join Today</legend>
+       
+            {{ form|crispy }}
+        </fieldset>
+        <!-- Submit Button placed after fieldset form -->
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Registering As?</legend> 
+            <div>
+              <input type="checkbox" id="scales" name="scales" checked>
+              <label for="scales">admin</label>
+            </div>
+        
+            <div>
+              <input type="checkbox" id="horns" name="horns">
+              <label for="horns">Patient</label>
+            </div>
+            <div >
+                <input type="checkbox" id="horns" name="horns">
+                <label for="horns">Doctor</label>
+              </div>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">Already have an account?<a class="ml-2" href="{% url 'login' %}">Log In</a></small>
+
+    </div>
+</div>
+ <!-- Here, endblock content states that you are ending the blockcontent of name content -->
+<!-- Helps when you have multiple blockcontents to end -->
+ {% endblock content %}
+
+    
+
+

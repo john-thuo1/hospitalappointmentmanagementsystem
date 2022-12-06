@@ -6,8 +6,8 @@ def send(phone_number, message="Hi from Africa's Talking"):
         "username": 'sandbox',
         "to": f"{phone_number}",
         "message": message,
-        "from": 511111  # Create a short Code using Africa's Talking SMS API 
-    
+        "from": 53624  # Create a short Code using SMS Africa's Talking API
+        # Channel Created is *384*536247#
     }
 
     header = {

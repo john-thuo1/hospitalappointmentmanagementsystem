@@ -21,7 +21,7 @@ DEBUG = config('DEBUG')
  
 # On the allowed hosts, create a url via Ngrok and copy the second part after https://, As shown
 # Ngrok site Url https://4af2-41-216-97-217.in.ngrok.io
-ALLOWED_HOSTS = ['127.0.0.1', '2ec0-41-216-97-217.eu.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', '2971-41-186-78-88.eu.ngrok.io']
 
 
 
@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '2ec0-41-216-97-217.eu.ngrok.io']
 
 INSTALLED_APPS = [
     'jazzmin',
+    'django_extensions',
 
     'crispy_forms',
     'django.contrib.admin',
@@ -110,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+TIME_INPUT_FORMATS = ['%I:%M %p',]
+
 
 USE_I18N = True
 
@@ -119,19 +122,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# STATIC_URL = '/static/'
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_URL = 'static/'
-# MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-# MEDIA_URL= '/media/'
 
+
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+MEDIA_URL= '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-LOGIN_REDIRECT_URL = 'login-redirect'
+LOGIN_REDIRECT_URL = 'home-page'
 
-# the route the user will automatically be redirected if they access a page without logging in
+# This will redirect someone trying to access e.g profile page without having logged in, to login page
 LOGIN_URL = 'login'
+# the route the user will automatically be redirected if they access a page without logging in
 #------------------------------------------------------
 
 # API Data Interaction
@@ -157,5 +163,10 @@ REST_FRAMEWORK = {
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+# GRAPH_MODELS = {
+#   'all_applications': True,
+#   'group_models': True,
+# }
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

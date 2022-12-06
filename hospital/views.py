@@ -4,13 +4,15 @@ from django.urls import reverse
 # from django.shortcuts import reverse
 from django.views.generic import (CreateView, ListView, UpdateView, DeleteView)
 
+# from . models import (Hospitals, Services, DoctorServices, DoctorTimeSlots, Appointments)
 from . models import (Services, DoctorServices, DoctorTimeSlots, Appointments)
+
 
 # Create your views here.
 
 #This is a method or function view that accepts a web request and returns back the index HTML page render
 def home(request):
-    return render(request, 'hospital/index.html')
+    return render(request, 'hospital/base.html')
 
 def about(request):
     return render(request, 'hospital/about.html')
@@ -27,6 +29,9 @@ before its sent to the template for rendering, the data is passed as a context o
 We also override a super class method called “get_success_url” that will be used to return the URL page a user is to be redirected to after they successfully create a patient in the database.
 
 '''
+
+#-------------------------------------------------------------------------------------------------------------
+
 class ServicesCreateView(CreateView):
     model = Services
     fields = ['name', 'description']
@@ -226,7 +231,7 @@ class AppointmentsDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Delete Appointment'
         patient_appointment= Appointments.objects.get(pk=self.kwargs.get('pk'))
-        context['message'] = f'Are you sure you want to delete patient "{patient_appointment.patient}" appointment on {patient_appointment.doctor_time_slots.date}?'
+        context['message'] = f"Are you sure you want to cancel {patient_appointment.patient}'s appointment on {patient_appointment.doctor_time_slots.date} at {patient_appointment.doctor_time_slots.start_time}?"
         context['cancel_url'] = 'appointments-list'
         return context
 
@@ -242,3 +247,54 @@ class AppointmentsUpdateView(UpdateView):
         context['table_title'] = 'Update Appointment Details'
         return context
 #----------------------------------------------------------------------------------------------------------------------------
+
+
+# class HospitalsCreateView(CreateView):
+#     model = Hospitals
+#     fields = ['name', 'services']
+#     template_name = 'hospital/hospitals_detail.html'
+    
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['table_title'] = 'Add A New Hospital'
+#         return context
+    
+#     def get_success_url(self) -> str:
+#         return reverse('hospitals-list')
+
+# class HospitalsListView(ListView):
+#     model = Hospitals
+#     template_name = 'hospital/hospitals_list.html'
+#     context_object_name = 'hospitals'
+#     ordering = ['-pk']
+#     paginate_by = 10
+
+
+
+ 
+
+# class HospitalsDeleteView(DeleteView):
+#     model = Hospitals
+#     success_url = '/'
+#     template_name = 'users/confirm_delete.html'
+   
+#     def get_context_data(self, **kwargs):
+#             context = super().get_context_data(**kwargs)
+#             context['title'] = 'Delete Hospital'
+#             hospital_name = Hospitals.objects.get(pk=self.kwargs.get('pk')).name
+#             context['message'] = f'Are you sure you want to delete "{hospital_name}" ?'
+#             context['cancel_url'] = 'hospitals-list'
+#             return context
+
+# class HospitalsUpdateView(UpdateView):
+#     model = Hospitals
+#     fields = ['name', 'services']
+#     template_name = 'hospital/hospitals_detail.html'
+#     def get_context_data(self, **kwargs):
+#         # Call the base implementation first to get a context
+#         context = super().get_context_data(**kwargs)
+#         context['table_title'] = 'Update Hospital Details'
+#         return context
+    
+#     def get_success_url(self):
+#         return reverse('hospitals-list')

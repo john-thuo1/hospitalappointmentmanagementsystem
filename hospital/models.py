@@ -1,11 +1,14 @@
+from dataclasses import dataclass
 from tabnanny import verbose
 from tkinter import CASCADE
+from unicodedata import name
 from django.db import models
 from users.models import (Patients, Doctors)
 from django.utils import timezone
 
 # Create your models here.
 # Surgery,General Practice, Pulmonology, Dermatology services,Rheumatology services,Orthopaedic Services
+   
 
 class Services(models.Model):
     name = models.CharField(max_length=100)
@@ -24,8 +27,8 @@ class Services(models.Model):
 # Table holds the services that each doctor offers in the hospital
 class DoctorServices(models.Model):
     # on_delete = models.PROTECT
-    service = models.ForeignKey(Services, on_delete=models.PROTECT)
-    doctor = models.ForeignKey(Doctors, on_delete=models.PROTECT)
+    service = models.ForeignKey(Services, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctors, on_delete=models.CASCADE)
   # Instead of using username , do self.doctor.get_full_name()
     def __str__(self):
         return f"{self.doctor.username} : {self.service.name}"
@@ -70,3 +73,13 @@ class Appointments(models.Model):
     class Meta:
         verbose_name_plural = "Appointments"
 
+# class Hospitals(models.Model):
+#     name = models.CharField(max_length=100, help_text="Add the Hospital Name")
+#     services = models. ManyToManyField(Services, blank=True)
+    
+#     def __str__(self):
+#         return f"{self.name}"
+
+    
+#     class Meta:
+#         verbose_name_plural = "Hospitals"
