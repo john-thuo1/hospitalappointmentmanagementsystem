@@ -36,10 +36,6 @@ Follow the steps below to set up and run the web app:
    ```
 
 4. Activate the virtual environment:
-   - Mac/Linux:
-     ```shell
-     source venv/bin/activate
-     ```
    - Windows:
      ```shell
      venv\Scripts\activate
