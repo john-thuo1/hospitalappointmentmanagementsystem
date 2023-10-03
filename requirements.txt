@@ -1,6 +1,6 @@
 appdata==2.1.2
 asgiref==3.5.2
-certifi==2022.6.15
+certifi==2023.7.22
 charset-normalizer==2.0.12
 click==8.0.3
 colorama==0.4.5
